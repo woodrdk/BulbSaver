@@ -21,5 +21,21 @@ namespace BulbSaver
         {
             Close();
         }
+
+        private void btnCalc_Click(object sender, EventArgs e)
+        {
+            double rate = Convert.ToDouble(tbPowerRate.Text);
+            int howManyB = Convert.ToInt32(tbBulbs.Text);
+            double howManyh = Convert.ToDouble(tbHours.Text);
+            int watts = Convert.ToInt32(tbWatts.Text);
+            double currCost = 0;
+            double ledApprox = 0;
+
+
+
+
+            tbLedCost.Text = Convert.ToString(ledApprox);
+            tbCC.Text = Convert.ToString(currCost);
+        }
     }
 }

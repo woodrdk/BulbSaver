@@ -31,13 +31,17 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnCalc = new System.Windows.Forms.Button();
             this.lblPowerCost = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbPowerRate = new System.Windows.Forms.TextBox();
             this.lblHowManyBulbs = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbBulbs = new System.Windows.Forms.TextBox();
             this.lblCurrentCost = new System.Windows.Forms.Label();
             this.lblLedCost = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbCC = new System.Windows.Forms.TextBox();
+            this.tbLedCost = new System.Windows.Forms.TextBox();
+            this.lblHours = new System.Windows.Forms.Label();
+            this.tbHours = new System.Windows.Forms.TextBox();
+            this.tbWatts = new System.Windows.Forms.TextBox();
+            this.lblWattts = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnExit
@@ -58,6 +62,7 @@
             this.btnCalc.TabIndex = 1;
             this.btnCalc.Text = "Calculate";
             this.btnCalc.UseVisualStyleBackColor = true;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
             // lblPowerCost
             // 
@@ -68,12 +73,12 @@
             this.lblPowerCost.TabIndex = 2;
             this.lblPowerCost.Text = "Whats your power rate?";
             // 
-            // textBox1
+            // tbPowerRate
             // 
-            this.textBox1.Location = new System.Drawing.Point(139, 10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.tbPowerRate.Location = new System.Drawing.Point(139, 10);
+            this.tbPowerRate.Name = "tbPowerRate";
+            this.tbPowerRate.Size = new System.Drawing.Size(100, 20);
+            this.tbPowerRate.TabIndex = 3;
             // 
             // lblHowManyBulbs
             // 
@@ -84,12 +89,12 @@
             this.lblHowManyBulbs.TabIndex = 4;
             this.lblHowManyBulbs.Text = "How many bulbs?";
             // 
-            // textBox2
+            // tbBulbs
             // 
-            this.textBox2.Location = new System.Drawing.Point(139, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.tbBulbs.Location = new System.Drawing.Point(139, 44);
+            this.tbBulbs.Name = "tbBulbs";
+            this.tbBulbs.Size = new System.Drawing.Size(100, 20);
+            this.tbBulbs.TabIndex = 5;
             // 
             // lblCurrentCost
             // 
@@ -109,32 +114,68 @@
             this.lblLedCost.TabIndex = 7;
             this.lblLedCost.Text = "Led Bulb cost would be approx: ";
             // 
-            // textBox3
+            // tbCC
             // 
-            this.textBox3.Location = new System.Drawing.Point(448, 14);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 8;
+            this.tbCC.Location = new System.Drawing.Point(448, 14);
+            this.tbCC.Name = "tbCC";
+            this.tbCC.Size = new System.Drawing.Size(100, 20);
+            this.tbCC.TabIndex = 8;
             // 
-            // textBox4
+            // tbLedCost
             // 
-            this.textBox4.Location = new System.Drawing.Point(448, 41);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 9;
+            this.tbLedCost.Location = new System.Drawing.Point(448, 41);
+            this.tbLedCost.Name = "tbLedCost";
+            this.tbLedCost.Size = new System.Drawing.Size(100, 20);
+            this.tbLedCost.TabIndex = 9;
+            // 
+            // lblHours
+            // 
+            this.lblHours.AutoSize = true;
+            this.lblHours.Location = new System.Drawing.Point(13, 88);
+            this.lblHours.Name = "lblHours";
+            this.lblHours.Size = new System.Drawing.Size(92, 13);
+            this.lblHours.TabIndex = 10;
+            this.lblHours.Text = "How many hours?";
+            // 
+            // tbHours
+            // 
+            this.tbHours.Location = new System.Drawing.Point(139, 81);
+            this.tbHours.Name = "tbHours";
+            this.tbHours.Size = new System.Drawing.Size(100, 20);
+            this.tbHours.TabIndex = 11;
+            // 
+            // tbWatts
+            // 
+            this.tbWatts.Location = new System.Drawing.Point(139, 118);
+            this.tbWatts.Name = "tbWatts";
+            this.tbWatts.Size = new System.Drawing.Size(100, 20);
+            this.tbWatts.TabIndex = 13;
+            // 
+            // lblWattts
+            // 
+            this.lblWattts.AutoSize = true;
+            this.lblWattts.Location = new System.Drawing.Point(13, 125);
+            this.lblWattts.Name = "lblWattts";
+            this.lblWattts.Size = new System.Drawing.Size(91, 13);
+            this.lblWattts.TabIndex = 12;
+            this.lblWattts.Text = "How many watts?";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(606, 253);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbWatts);
+            this.Controls.Add(this.lblWattts);
+            this.Controls.Add(this.tbHours);
+            this.Controls.Add(this.lblHours);
+            this.Controls.Add(this.tbLedCost);
+            this.Controls.Add(this.tbCC);
             this.Controls.Add(this.lblLedCost);
             this.Controls.Add(this.lblCurrentCost);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbBulbs);
             this.Controls.Add(this.lblHowManyBulbs);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbPowerRate);
             this.Controls.Add(this.lblPowerCost);
             this.Controls.Add(this.btnCalc);
             this.Controls.Add(this.btnExit);
@@ -150,13 +191,17 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnCalc;
         private System.Windows.Forms.Label lblPowerCost;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbPowerRate;
         private System.Windows.Forms.Label lblHowManyBulbs;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbBulbs;
         private System.Windows.Forms.Label lblCurrentCost;
         private System.Windows.Forms.Label lblLedCost;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tbCC;
+        private System.Windows.Forms.TextBox tbLedCost;
+        private System.Windows.Forms.Label lblHours;
+        private System.Windows.Forms.TextBox tbHours;
+        private System.Windows.Forms.TextBox tbWatts;
+        private System.Windows.Forms.Label lblWattts;
     }
 }
 
