@@ -24,6 +24,7 @@ namespace BulbSaver
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
+                        
             double rate = Convert.ToDouble(tbPowerRate.Text);
             int howManyB = Convert.ToInt32(tbBulbs.Text);
             double howManyh = Convert.ToDouble(tbHours.Text);
@@ -31,11 +32,35 @@ namespace BulbSaver
             double currCost = 0;
             double ledApprox = 0;
 
-
-
-
             tbLedCost.Text = Convert.ToString(ledApprox);
             tbCC.Text = Convert.ToString(currCost);
+            
+        }
+
+        private void CheckValues()
+        {
+            if(tbPowerRate.Text == null)
+            {
+                MessageBox.Show("Please enter power rate");
+            }
+            if (tbBulbs.Text == null)
+            {
+                MessageBox.Show("Please enter how many bulbs");
+
+            }
+            if (tbHours.Text == null)
+            {
+                MessageBox.Show("Please enter how many hours");
+
+            }
+            if (tbWatts.Text == null)
+            {
+                MessageBox.Show("Please enter how many hours");
+
+            }
+                  
+            
+
         }
     }
 }
