@@ -24,17 +24,38 @@ namespace BulbSaver
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
-                        
-            double rate = Convert.ToDouble(tbPowerRate.Text);
-            int howManyB = Convert.ToInt32(tbBulbs.Text);
-            double howManyh = Convert.ToDouble(tbHours.Text);
-            int watts = Convert.ToInt32(tbWatts.Text);
             double currCost = 0;
             double ledApprox = 0;
 
-            tbLedCost.Text = Convert.ToString(ledApprox);
-            tbCC.Text = Convert.ToString(currCost);
+            double rate = Convert.ToDouble(tbPowerRate.Text); // rate 
+            int howManyB = Convert.ToInt32(tbBulbs.Text);       // how many bulbs
+            double howManyh = Convert.ToDouble(tbHours.Text);   // how many hours a day
+            int watts = Convert.ToInt32(tbCurrWatt.Text);          // how many watts 
             
+
+            double fixtWatts = watts * howManyB; // how many watts total
+
+            double kwh = fixtWatts * howManyh / 1000;
+            double monthlyKWH = kwh * 30;
+
+            double aftFixtWatts = Convert.ToDouble(tbRepWatts.Text) * howManyB; // how many watts total
+            double afterKwh = aftFixtWatts * howManyh / 1000;
+            double afterMonthlyKWH = afterKwh * 30;
+
+            currCost = kwh * rate;
+            double monthlyCost = monthlyKWH * rate;
+            double afterMonthlyCost = afterMonthlyKWH * rate;
+            tbLedCost.Text = Convert.ToString(afterMonthlyCost);
+            tbCC.Text = Convert.ToString(monthlyCost);
+            tbSavings.Text = Convert.ToString(monthlyCost - afterMonthlyCost);
+                      
+
+            tbTotRepCost.Text = Convert.ToString(howManyB * Convert.ToDouble(tbCostLamp.Text));
+            tbPayoffPer.Text = Convert.ToString((howManyB * Convert.ToDouble(tbCostLamp.Text)) / (monthlyCost - afterMonthlyCost));
+
+            tbBeforeUsage.Text = Convert.ToString(monthlyKWH);
+            tbAfterUsage.Text = Convert.ToString(afterMonthlyKWH);
+            tbUsageSavings.Text = Convert.ToString(monthlyKWH - afterMonthlyKWH);
         }
 
         private void CheckValues()
@@ -53,7 +74,7 @@ namespace BulbSaver
                 MessageBox.Show("Please enter how many hours");
 
             }
-            if (tbWatts.Text == null)
+            if (tbRepWatts.Text == null)
             {
                 MessageBox.Show("Please enter how many hours");
 
